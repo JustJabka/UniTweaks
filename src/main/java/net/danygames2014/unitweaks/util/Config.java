@@ -72,7 +72,7 @@ public class Config {
             @ConfigEntry(name = "Disable F3 Entity ID Tags")
             public Boolean disableDebugEntityIdTags = true;
 
-            @ConfigEntry(name = "Show F3 Profiler Chart")
+            @ConfigEntry(name = "Disable F3 Profiler Chart")
             public Boolean disableDebugProfilerChart = false;
         }
 
