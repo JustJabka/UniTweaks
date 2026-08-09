@@ -1,4 +1,4 @@
-package net.danygames2014.unitweaks.mixin.tweaks.disablef3entityids;
+package net.danygames2014.unitweaks.mixin.tweaks.debugoverlay;
 
 import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LivingEntityRendererMixin {
     @Inject(method = "renderNameTag(Lnet/minecraft/entity/LivingEntity;DDD)V", at = @At("HEAD"), cancellable = true)
     public void disableDebugEntityIds(LivingEntity entity, double x, double y, double z, CallbackInfo ci) {
-        if (UniTweaks.USER_INTERFACE_CONFIG.disableDebugEntityIdTags) {
+        if (UniTweaks.USER_INTERFACE_CONFIG.debugOverlayConfig.disableDebugEntityIdTags) {
             ci.cancel();
         }
     }

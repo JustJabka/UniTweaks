@@ -44,8 +44,8 @@ public class Config {
         @ConfigEntry(name = "Achievement Screen Back To Menu", description = "Done button will lead to Game Menu instead of unpausing")
         public Boolean achievementBackToMenu = true;
 
-        @ConfigEntry(name = "Disable F3 Entity ID Tags")
-        public Boolean disableDebugEntityIdTags = true;
+        @ConfigCategory(name = "Debug Overlay Settings")
+        public DebugOverlayConfig debugOverlayConfig = new DebugOverlayConfig();
 
         @ConfigEntry(name = "Front View Third Person")
         public FrontViewMode frontViewThirdPerson = FrontViewMode.NORMAL;
@@ -67,6 +67,11 @@ public class Config {
         
         @ConfigCategory(name = "Photo Mode")
         public PhotoModeConfig photoModeConfig = new PhotoModeConfig();
+
+        public static class DebugOverlayConfig {
+            @ConfigEntry(name = "Disable F3 Entity ID Tags")
+            public Boolean disableDebugEntityIdTags = true;
+        }
 
         public static class VideoSettingsConfig {
             @ConfigEntry(name = "Enable Brightness Slider", description = "Requires a restart to take effect", requiresRestart = true)
