@@ -124,6 +124,7 @@
     "tweaks.cleartextfield.TextFieldWidgetMixin",
     "tweaks.cloudheight.WorldRendererMixin",
     "tweaks.cloudstoggle.WorldRendererMixin",
+    "tweaks.debugoverlay.InGameHudMixin",
     "tweaks.debugoverlay.LivingEntityRendererMixin",
     "tweaks.debugoverlay.MinecraftMixin",
     "tweaks.disablecontrollerinit.MinecraftMixin",

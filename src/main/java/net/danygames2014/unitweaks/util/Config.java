@@ -74,6 +74,27 @@ public class Config {
 
             @ConfigEntry(name = "Disable F3 Profiler Chart")
             public Boolean disableDebugProfilerChart = false;
+
+            @ConfigEntry(name = "Additions To Debug Overlay Y Offset", minValue = -4096, maxValue = 4096)
+            public Integer overlayAdditionsYOffset = 112;
+
+            @ConfigEntry(name = "Show F3 Day Counter")
+            public Boolean showDebugDayCounter = false;
+
+            @ConfigEntry(name = "Show F3 Light Level")
+            public Boolean showDebugLightLevel = true;
+
+            @ConfigEntry(name = "Show F3 Biome")
+            public Boolean showDebugBiome = false;
+
+            @ConfigEntry(name = "Show F3 Slime Chunk", description = "WARNING: This could be considered a hack on some servers")
+            public Boolean showDebugSlimeChunk = false;
+
+            @ConfigEntry(name = "Show F3 Dimension")
+            public Boolean showDebugDimension = false;
+
+            @ConfigEntry(name = "Show F3 World Seed", description = "WARNING: This could be considered a hack on some servers")
+            public Boolean showDebugWorldSeed = false;
         }
 
         public static class VideoSettingsConfig {
