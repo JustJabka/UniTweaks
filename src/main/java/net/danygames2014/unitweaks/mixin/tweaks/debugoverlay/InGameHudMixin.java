@@ -1,5 +1,7 @@
 package net.danygames2014.unitweaks.mixin.tweaks.debugoverlay;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.danygames2014.unitweaks.UniTweaks;
 import net.danygames2014.unitweaks.util.Config;
 import net.fabricmc.api.EnvType;
@@ -36,6 +38,41 @@ public class InGameHudMixin {
     @Unique
     private Config.UserInterfaceConfig.DebugOverlayConfig getDebugOverlayConfig() {
         return UniTweaks.USER_INTERFACE_CONFIG.debugOverlayConfig;
+    }
+
+    @WrapOperation(
+            method = "render",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTextWithShadow(Lnet/minecraft/client/font/TextRenderer;Ljava/lang/String;III)V"
+            )
+    )
+    private void roundPlayerCoordinates(InGameHud instance, TextRenderer renderer, String text, int x, int y, int z, Operation<Void> original) {
+        if (!getDebugOverlayConfig().roundedDebugCoordinates) {
+            original.call(instance, renderer, text, x, y, z);
+            return;
+        }
+
+        if (text.startsWith("x: ")) text = getFormattedCoordinate('x');
+        else if (text.startsWith("y: ")) text = getFormattedCoordinate('y');
+        else if (text.startsWith("z: ")) text = getFormattedCoordinate('z');
+
+        original.call(instance, renderer, text, x, y, z);
+    }
+
+    @Unique
+    private String getFormattedCoordinate(char sign) {
+        ClientPlayerEntity player = this.minecraft.player;
+        if (player == null) return "%s: 0.0".formatted(sign);
+
+        double coordinate = switch (sign) {
+            case 'x' -> player.x;
+            case 'y' -> player.boundingBox.minY;
+            case 'z' -> player.z;
+            default -> 0.0;
+        };
+
+        return String.format("%s: %.1f", sign, coordinate);
     }
 
     @Inject(

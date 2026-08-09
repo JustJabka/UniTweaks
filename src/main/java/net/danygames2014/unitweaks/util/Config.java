@@ -75,6 +75,9 @@ public class Config {
             @ConfigEntry(name = "Disable F3 Profiler Chart")
             public Boolean disableDebugProfilerChart = false;
 
+            @ConfigEntry(name = "Rounded F3 Coordinates")
+            public Boolean roundedDebugCoordinates = true;
+
             @ConfigEntry(name = "Additions To Debug Overlay Y Offset", minValue = -4096, maxValue = 4096)
             public Integer overlayAdditionsYOffset = 112;
 
