@@ -11,11 +11,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Entity.class)
 public abstract class EntityMixin {
 
-    @Shadow
-    public World world;
+    @Shadow public World world;
+    @Shadow public double x;
+    @Shadow public double y;
+    @Shadow public double z;
 
-    @Shadow
-    public boolean dead;
+    @Shadow public boolean dead;
 
     @Shadow
     public abstract void markDead();

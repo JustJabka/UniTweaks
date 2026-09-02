@@ -17,14 +17,13 @@ public abstract class TntEntityMixin extends EntityMixin {
     protected void damage(Entity damageSource, int amount, CallbackInfoReturnable<Boolean> cir) {
         if (world.isRemote) return;
 
-        TntEntity tntEntity = (TntEntity) (Object) this;
         if (!UniTweaks.OLD_FEATURES_CONFIG.punchTntToDefuse) return;
 
         if (dead) return;
         if (!(damageSource instanceof PlayerEntity)) return;
 
         markDead();
-        world.spawnEntity(new ItemEntity(this.world, tntEntity.x, tntEntity.y, tntEntity.z, new ItemStack(Block.TNT)));
+        world.spawnEntity(new ItemEntity(this.world, this.x, this.y, this.z, new ItemStack(Block.TNT)));
         cir.setReturnValue(true);
     }
 }
