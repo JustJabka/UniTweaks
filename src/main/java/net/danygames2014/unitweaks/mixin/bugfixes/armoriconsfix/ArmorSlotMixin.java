@@ -1,4 +1,4 @@
-package net.danygames2014.unitweaks.mixin.tweaks.armoricons;
+package net.danygames2014.unitweaks.mixin.bugfixes.armoriconsfix;
 
 import net.danygames2014.unitweaks.interfaces.ArmorSlotDuck;
 import org.spongepowered.asm.mixin.Mixin;
